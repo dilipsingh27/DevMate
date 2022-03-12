@@ -17,9 +17,10 @@ const Dashboard = ({getCurrentProfile,deleteAccount ,auth:{user},profile: { prof
     <Spinner />
   ) : (
     <section className='container'>
+      
       <h1 className="large test-primary">Dashboard</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i>Welcome {user && user.name}
+        <i className='fas fa-user'></i>{' '}Welcome {user && user.name}
       </p>
       {profile !==null ? (
         <Fragment>
@@ -29,7 +30,7 @@ const Dashboard = ({getCurrentProfile,deleteAccount ,auth:{user},profile: { prof
 
           <div className='my-2'>
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-user-minus"></i>Delete My Account
+              <i className="fas fa-user-minus"></i>{' '}Delete My Account
             </button>
           </div>
         </Fragment>
@@ -41,6 +42,7 @@ const Dashboard = ({getCurrentProfile,deleteAccount ,auth:{user},profile: { prof
           </Link>
         </Fragment>
       )}
+      
     </section>
   );
 };

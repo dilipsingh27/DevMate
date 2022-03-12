@@ -146,7 +146,22 @@ router.get('/user/:user_id',async (req,res)=> {
 router.delete('/',auth,async (req,res)=> {
     try {
         // @todo - remove users posts[Remove USer Posts]
+        
+
         await Post.deleteMany({user: req.user.id});
+
+       const post = await Post.find();
+       const user=req.user.id;
+
+       for(var i=0;i<post.length;i++){
+        
+            // Get remove index
+            const removeIndex = post[i].comments.map(comment => comment.user.toString().indexOf(req.user.id));
+            post[i].comments.splice(removeIndex);
+            await post[i].save();
+      }
+        
+
         // Remove profile
         await Profile.findOneAndRemove({user: req.user.id});
         //Remove user

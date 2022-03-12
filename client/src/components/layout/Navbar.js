@@ -13,6 +13,11 @@ const Navbar = ({auth : {isAuthenticated ,loading}, logout}) => {
         </Link>
       </li>
       <li>
+        <Link to="/posts">
+        Posts
+        </Link>
+      </li>
+      <li>
         <Link to="/dashboard">
         <i className="fas fa-user" />{' '}
         <span className="hide-sm">Dashboard</span>
@@ -20,10 +25,10 @@ const Navbar = ({auth : {isAuthenticated ,loading}, logout}) => {
       </li>
 
       <li>
-        <a onClick = {logout} href="#!">
+        <Link onClick = {logout} to={'/'}>     
           <i className="fas fa-sign-out-alt"></i>{' '}
           <span className="hide-sm">Logout</span>
-        </a>
+        </Link>
       </li>
     </ul>
   );
@@ -36,12 +41,12 @@ const Navbar = ({auth : {isAuthenticated ,loading}, logout}) => {
         </Link>
       </li>
       <li>
-        <Link to="/register">
+        <Link to="/register"><i className="fas fa-user-plus"></i>{' '}
           Register
         </Link>
       </li>
       <li>
-        <Link to="/login">
+        <Link to="/login"><i className="fas fa-sign-in-alt"></i>{' '}
           Login
         </Link>
       </li>
@@ -51,7 +56,7 @@ const Navbar = ({auth : {isAuthenticated ,loading}, logout}) => {
   return (
   <nav className="navbar bg-dark">
     <h1>
-      <Link to="/"> <i className="fas fa-code"></i>DevBook</Link>
+      <Link to="/"> <i className="fas fa-code"></i>DevMate</Link>
     </h1>
     {!loading && (
       <Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>

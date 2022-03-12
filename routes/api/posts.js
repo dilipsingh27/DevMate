@@ -25,8 +25,8 @@ router.post('/',[auth, [
 
         try {
             
-            const user = await User.findOne({user: req.user.id}).select('-password');          //heremade changes findById and object
-
+            const user = await User.findById(req.user.id).select('-password');          //heremade changes findById and object
+            console.log(user);
             const newPost = new Post({
                 text: req.body.text,
                 name: user.name,
@@ -181,7 +181,7 @@ router.post('/comment/:id',[auth, [
 
         try {
             
-            const user = await User.findOne({user: req.user.id}).select('-password');          //heremade changes findById and object
+            const user = await User.findById(req.user.id).select('-password');          //heremade changes findById and object
             //need to get a post not creating new post
             const post = await Post.findById(req.params.id);
 
