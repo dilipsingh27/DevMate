@@ -19,6 +19,7 @@ body {
   line-height: 1.6;
   /* background-color: rgb(255, 255, 255); */
   background-image: url('./img/showcase3.jpg');
+  
   color: #333;
 }
 
@@ -458,6 +459,16 @@ button {
   flex-basis: 20%;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.7);   */
+  color: white;
+  font-size: 1.129rem;
+  text-align: center;
+}
 /* Posts Page */
 .post-form .post-form-header {
   background: var(--primary-color);

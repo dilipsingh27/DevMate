@@ -36,6 +36,7 @@ const App = () => {
 
   return (
   <Provider store={store}>
+    
   <Router>
     <Navbar />
     {<Alert /> }
@@ -77,17 +78,15 @@ const App = () => {
       />
       
       <Route path="/*" element={<NotFound />} />
-       {/* 
-      
-      
-      
-      
        
-      
-       */}
+
     </Routes>
+   
   </Router>
+
 </Provider>
+     
+
 // )
 
 
