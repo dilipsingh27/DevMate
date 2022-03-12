@@ -68,9 +68,11 @@ export default function( state = initialState ,action) {
                 // comments: state.post.comments.filter(comment => comment._id !== payload),
 
                 ...state,
+                // comments:{comments: state.post.comments.filter(comment => comment._id !== payload),...state.post.comments},
                 comments: state.post.comments.filter(comment => comment._id !== payload),
                 loading: false
             };
+
         default:
             return state;
     }

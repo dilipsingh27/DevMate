@@ -9,7 +9,7 @@ import {
     ADD_POST,
     ADD_COMMENT,
     REMOVE_COMMENT,
-    UPDATE_PROFILE
+    REFRESH_COMMENT
 } from './types';
 
 //Get Posts
@@ -70,7 +70,7 @@ export const deletePost = id => async dispatch => {
 
         dispatch({
             type: DELETE_POST,
-            payload: id   // here id is Post id && likes is array of likes that have been made
+            payload: id   // here id is Post id 
         });
 
         dispatch(setAlert('Post Removed' ,'success'))
@@ -159,9 +159,10 @@ export const deleteComment = (postId, commentId) => async dispatch => {
             type: REMOVE_COMMENT,
             payload: commentId
         });
-
+          
         dispatch(setAlert('Comment Removed' ,'success'))
-        // dispatch({type:UPDATE_PROFILE})
+        
+        
     } catch (err) {
         dispatch({
             type: POST_ERROR,

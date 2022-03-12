@@ -16,7 +16,7 @@ const Post = ({ getPost ,post: { post, loading } }) => {
 
   return (
     
-    loading || post === null ? (<Spinner />) : (<section className='container'>
+       loading || post === null ? (<Spinner />) : (<section className='container'>
         <Link to='/posts' className='btn'>
             Back To Posts
         </Link>
@@ -38,7 +38,7 @@ Post.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    post: state.post
+    post: state.post,
 });
 
 

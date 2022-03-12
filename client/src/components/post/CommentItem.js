@@ -1,16 +1,18 @@
-import React,{Fragment} from 'react';
-import { Link } from 'react-router-dom';
+import React,{Fragment } from 'react';
+import { Link, Navigate,useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteComment } from '../../actions/post';
-
 const CommentItem = ({
     postId,
     comment: { _id , name , text ,  avatar , user , date },
     auth,
     deleteComment
 }) => {
+
+const navigate = useNavigate();
+
   return (
     <div className="post bg-white p-1 my-1">
     <div>
@@ -31,7 +33,10 @@ const CommentItem = ({
           Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
       {!auth.loading && user === auth.user._id && (
-          <button onClick={() => deleteComment(postId,_id)} type="button" className='btn btn-danger'>
+          <button onClick={() => { deleteComment(postId,_id);
+          // window.location.reload()
+          navigate('/posts')
+          }} type="button" className='btn btn-danger'>
             <i className="fas fa-times"></i>
           </button>
       )}
