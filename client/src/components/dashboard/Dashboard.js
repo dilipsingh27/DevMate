@@ -44,8 +44,10 @@ const Dashboard = ({getCurrentProfile,deleteAccount ,auth:{user},profile: { prof
       )}
       
     </section>
-  );
-};
+  
+  )
+}
+  
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,

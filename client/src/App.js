@@ -15,6 +15,7 @@ import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import NotFound from './components/layout/NotFound';
+import { LOGIN_FAIL } from './actions/types';
 
 import PrivateRoute from './components/routing/PrivateRoute';
 
@@ -26,12 +27,29 @@ import setAuthToken from './utils/setAuthToken';
 
 import './App.css'; 
 
-if(localStorage.token) {
-  setAuthToken(localStorage.token);
-}
+// if(localStorage.token) {
+//   setAuthToken(localStorage.token);
+// }
+
 const App = () => {
+  // useEffect(() => {
+  //   store.dispatch(loadUser());
+  // }, []);
+
   useEffect(() => {
+    // check for token in LS when app first runs
+    if (localStorage.token) {
+      // if there is a token set axios headers for all requests
+      setAuthToken(localStorage.token);
+    }
+    // try to fetch a user, if no token or invalid token we
+    // will get a 401 response from our API
     store.dispatch(loadUser());
+
+    // log user out from all tabs if they log out in one tab
+    window.addEventListener('storage', () => {
+      if (!localStorage.token) store.dispatch({ type: LOGIN_FAIL});
+    });
   }, []);
 
   return (
@@ -39,7 +57,7 @@ const App = () => {
     
   <Router>
     <Navbar />
-    {<Alert /> }
+    <Alert /> 
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="register" element={<Register />} />
